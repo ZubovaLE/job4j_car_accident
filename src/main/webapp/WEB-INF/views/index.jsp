@@ -9,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
             crossorigin="anonymous"></script>
@@ -23,6 +23,7 @@
     <title>Accident</title>
 </head>
 <body>
+<a href="<c:url value='/create'/>">Добавить инцидент</a>
 <div class="container">
     <div class="card-body>">
         <table class="table table-bordered">
@@ -30,17 +31,20 @@
                 <h3>Information</h3>
             </div>
             <thead>
+            <th scope="col">Number</th>
             <th scope="col">Name</th>
-            <th scope="col">Age</th>
-            <th scope="col">Profession</th>
+            <th scope="col">Text</th>
             <th scope="col">Address</th>
             </thead>
             <tbody>
-            <tr>
-                <c:forEach items="${userInfo}" var="info">
-                    <td><c:out value="${info}"/></td>
-                </c:forEach>
-            </tr>
+            <c:forEach items="${accidents.entrySet()}" var="accident">
+                <tr>
+                    <td><c:out value="${accident.key}"/></td>
+                    <td><c:out value="${accident.value.name}"/></td>
+                    <td><c:out value="${accident.value.text}"/></td>
+                    <td><c:out value="${accident.value.address}"/></td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>
