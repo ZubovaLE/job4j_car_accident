@@ -5,19 +5,25 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 @Getter
 @Repository
-public class AccidentMem {
+public class AccidentMem implements Findable<Accident> {
     private final HashMap<Integer, Accident> accidents = new HashMap<>();
-
-    public AccidentMem() {
-        accidents.put(1, new Accident("One", "Bad", "1, Example Street"));
-        accidents.put(2, new Accident("Two", "Car accident", "2, Example Street"));
-        accidents.put(3, new Accident("Three", "Car is broken", "3, Example Street"));
-    }
 
     public void create(Accident accident) {
         accidents.put(accident.getId(), accident);
+    }
+
+    @Override
+    public Map<Integer, Accident> findAll() {
+        return accidents;
+    }
+
+    @Override
+    public Optional<Accident> findById(int id) {
+        return Optional.of(accidents.get(id));
     }
 }

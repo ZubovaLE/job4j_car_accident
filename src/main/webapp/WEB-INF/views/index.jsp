@@ -20,11 +20,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-    <title>Accident</title>
+    <title>Accidents</title>
 </head>
 <body>
-<a href="<c:url value='/create'/>">Добавить инцидент</a>
 <div class="container">
+    <div class="card-header" style="text-align: right">
+        <a href="<c:url value='/create'/>">Добавить инцидент</a>
+    </div>
     <div class="card-body>">
         <table class="table table-bordered">
             <div class="table-header" style="text-align: center">
@@ -37,7 +39,7 @@
             <th scope="col">Address</th>
             </thead>
             <tbody>
-            <c:forEach items="${accidents.entrySet()}" var="accident">
+            <c:forEach items="${accidents}" var="accident">
                 <tr>
                     <td><c:out value="${accident.key}"/></td>
                     <td><c:out value="${accident.value.name}"/></td>
