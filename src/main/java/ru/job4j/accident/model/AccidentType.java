@@ -7,17 +7,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Accident {
+public class AccidentType {
     @EqualsAndHashCode.Include
     private int id;
-    private String name;
-    private String text;
-    private String address;
-    private AccidentType type;
 
-    public Accident(String name, String text, String address) {
-        this.name = name;
-        this.text = text;
-        this.address = address;
+    private String name;
+
+    public static AccidentType of(int id, String name) {
+        AccidentType type = new AccidentType();
+        type.id = id;
+        type.name = name;
+        return type;
     }
 }
