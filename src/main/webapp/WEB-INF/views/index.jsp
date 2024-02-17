@@ -33,7 +33,6 @@
                 <h3>Information</h3>
             </div>
             <thead>
-            <th scope="col">Number</th>
             <th scope="col">Name</th>
             <th scope="col">Text</th>
             <th scope="col">Address</th>
@@ -41,8 +40,7 @@
             <tbody>
             <c:forEach items="${accidents}" var="accident">
                 <tr>
-                    <td><c:out value="${accident.key}"/></td>
-                    <td><c:out value="${accident.value.name}"/></td>
+                    <td><a href="<c:url value='/update?id=${accident.key}'/>">${accident.value.name}</a></td>
                     <td><c:out value="${accident.value.text}"/></td>
                     <td><c:out value="${accident.value.address}"/></td>
                 </tr>
