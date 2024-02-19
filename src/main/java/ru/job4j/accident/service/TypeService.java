@@ -21,4 +21,8 @@ public class TypeService {
     public List<AccidentType> findAll() {
         return typeMem.findAll();
     }
+
+    public AccidentType findById(int id) {
+        return typeMem.findById(id);
+    }
 }

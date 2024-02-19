@@ -24,6 +24,7 @@ public class AccidentControl {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Accident accident) {
+        accident.setType(typeService.findById(accident.getType().getId()));
         accidentService.create(accident);
         return "redirect:/";
     }
