@@ -5,9 +5,10 @@ import ru.job4j.accident.model.AccidentType;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
-public class TypeMem {
+public class TypeMem implements Findable<AccidentType> {
     private final HashMap<Integer, AccidentType> types = new HashMap<>();
 
     public TypeMem() {
@@ -16,11 +17,13 @@ public class TypeMem {
         types.put(3, AccidentType.of(3, "Машина и велосипед"));
     }
 
+    @Override
     public List<AccidentType> findAll() {
         return types.values().stream().toList();
     }
 
-    public AccidentType findById(int id) {
-        return types.get(id);
+    @Override
+    public Optional<AccidentType> findById(int id) {
+        return Optional.of(types.get(id));
     }
 }

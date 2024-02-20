@@ -5,10 +5,9 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
 
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
-@Getter
 @Repository
 public class AccidentMem implements Findable<Accident> {
     private final HashMap<Integer, Accident> accidents = new HashMap<>();
@@ -18,8 +17,8 @@ public class AccidentMem implements Findable<Accident> {
     }
 
     @Override
-    public Map<Integer, Accident> findAll() {
-        return accidents;
+    public List<Accident> findAll() {
+        return accidents.values().stream().toList();
     }
 
     @Override

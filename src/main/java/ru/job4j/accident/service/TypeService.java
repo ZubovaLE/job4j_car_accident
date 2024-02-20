@@ -5,9 +5,10 @@ import ru.job4j.accident.model.AccidentType;
 import ru.job4j.accident.repository.TypeMem;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class TypeService {
+public class TypeService implements FindableForServices<AccidentType> {
     private final TypeMem typeMem = new TypeMem();
 
     private static final class Lazy {
@@ -22,7 +23,7 @@ public class TypeService {
         return typeMem.findAll();
     }
 
-    public AccidentType findById(int id) {
+    public Optional<AccidentType> findById(int id) {
         return typeMem.findById(id);
     }
 }

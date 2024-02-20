@@ -4,11 +4,11 @@ import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
 import ru.job4j.accident.repository.AccidentMem;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AccidentService {
+public class AccidentService implements FindableForServices<Accident> {
     private final AccidentMem accidentMem = new AccidentMem();
 
     private static final class Lazy {
@@ -23,10 +23,12 @@ public class AccidentService {
         accidentMem.create(accident);
     }
 
-    public Map<Integer, Accident> findAll() {
+    @Override
+    public List<Accident> findAll() {
         return accidentMem.findAll();
     }
 
+    @Override
     public Optional<Accident> findById(int id) {
         return accidentMem.findById(id);
     }
