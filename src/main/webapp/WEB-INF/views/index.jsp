@@ -48,7 +48,13 @@
                     <td><c:out value="${accident.type.name}"/></td>
                     <td>
                         <c:forEach var="rule" items="${accident.rules}">
-                            <c:out value="${rule.name}"/>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <c:out value="${rule.name}"/>
+                                    </td>
+                                </tr>
+                            </table>
                         </c:forEach>
                     </td>
                 </tr>
