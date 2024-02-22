@@ -1,5 +1,6 @@
 package ru.job4j.accident.controller;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,17 +8,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.model.Rule;
+import ru.job4j.accident.repository.AccidentJdbcTemplate;
 import ru.job4j.accident.service.AccidentService;
 import ru.job4j.accident.service.RuleService;
 import ru.job4j.accident.service.TypeService;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.stream.Collectors;
 
 @Controller
 public class AccidentControl {
-    private final AccidentService accidentService = AccidentService.instOf();
+    private final AccidentService accidentService = new AccidentService(new AccidentJdbcTemplate(new JdbcTemplate()));
     private final TypeService typeService = TypeService.instOf();
     private final RuleService ruleService = RuleService.instOf();
 

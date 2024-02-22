@@ -1,35 +1,29 @@
 package ru.job4j.accident.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accident.model.Accident;
-import ru.job4j.accident.repository.AccidentMem;
+import ru.job4j.accident.repository.AccidentJdbcTemplate;
 
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Service
 public class AccidentService implements FindableForServices<Accident> {
-    private final AccidentMem accidentMem = new AccidentMem();
-
-    private static final class Lazy {
-        private static final AccidentService INST = new AccidentService();
-    }
-
-    public static AccidentService instOf() {
-        return AccidentService.Lazy.INST;
-    }
+    private final AccidentJdbcTemplate accidents;
 
     public void create(Accident accident) {
-        accidentMem.create(accident);
+        accidents.create(accident);
     }
 
     @Override
     public List<Accident> findAll() {
-        return accidentMem.findAll();
+        return accidents.findAll();
     }
 
     @Override
     public Optional<Accident> findById(int id) {
-        return accidentMem.findById(id);
+        return accidents.findById(id);
     }
 }
