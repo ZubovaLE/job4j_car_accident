@@ -7,13 +7,9 @@ import ru.job4j.accident.model.Accident;
 import java.util.List;
 import java.util.Optional;
 
-//@Repository
+@Repository
 public class AccidentJdbcTemplate implements Findable<Accident> {
-    private final JdbcTemplate jdbc;
-
-    public AccidentJdbcTemplate(JdbcTemplate jdbc) {
-        this.jdbc = jdbc;
-    }
+    private final JdbcTemplate jdbc = new JdbcTemplate();
 
     public Accident create(Accident accident) {
         jdbc.update("insert into accident (name, text, address) values (?, ?, ?)",
