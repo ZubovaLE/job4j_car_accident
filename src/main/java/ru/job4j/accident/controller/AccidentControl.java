@@ -1,5 +1,6 @@
 package ru.job4j.accident.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +14,12 @@ import ru.job4j.accident.service.TypeService;
 
 import javax.servlet.http.HttpServletRequest;
 
+@RequiredArgsConstructor
 @Controller
 public class AccidentControl {
-    private final AccidentService accidentService = new AccidentService();
-    private final TypeService typeService = TypeService.instOf();
-    private final RuleService ruleService = RuleService.instOf();
+    private final AccidentService accidentService;
+    private final TypeService typeService;
+    private final RuleService ruleService;
 
     @GetMapping("/create")
     public String create(Model model) {

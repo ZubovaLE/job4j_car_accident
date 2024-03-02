@@ -1,5 +1,6 @@
 package ru.job4j.accident.repository;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import ru.job4j.accident.model.Accident;
@@ -7,9 +8,10 @@ import ru.job4j.accident.model.Accident;
 import java.util.List;
 import java.util.Optional;
 
+@RequiredArgsConstructor
 @Repository
 public class AccidentJdbcTemplate implements Findable<Accident> {
-    private final JdbcTemplate jdbc = new JdbcTemplate();
+    private final JdbcTemplate jdbc;
 
     public Accident create(Accident accident) {
         jdbc.update("insert into accident (name, text, address) values (?, ?, ?)",
