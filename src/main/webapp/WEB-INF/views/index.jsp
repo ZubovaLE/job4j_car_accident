@@ -23,6 +23,9 @@
     <title>Accidents</title>
 </head>
 <body>
+<div>
+    Login as : ${user.username}
+</div>
 <div class="container">
     <div class="card-header" style="text-align: right">
         <a href="<c:url value='/create'/>">Добавить инцидент</a>

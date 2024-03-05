@@ -13,7 +13,7 @@ import java.util.Optional;
 public class AccidentJdbcTemplate implements Findable<Accident> {
     private final JdbcTemplate jdbc;
 
-    public Accident create(Accident accident) {
+    public Accident save(Accident accident) {
         jdbc.update("insert into accident (name, text, address) values (?, ?, ?)",
                 accident.getName(), accident.getText(), accident.getAddress());
         return accident;

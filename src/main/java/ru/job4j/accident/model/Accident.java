@@ -23,15 +23,15 @@ public class Accident {
     private String text;
     private String address;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "accident_type_id")
     private AccidentType type;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "accident_rules",
+            joinColumns = @JoinColumn(name = "accident_id"),
+            inverseJoinColumns = @JoinColumn(name = "rule_id")
+    )
     private Set<Rule> rules;
-
-    public Accident(String name, String text, String address) {
-        this.name = name;
-        this.text = text;
-        this.address = address;
-    }
 }

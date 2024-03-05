@@ -13,8 +13,8 @@ import java.util.Optional;
 public class AccidentService implements FindableForServices<Accident> {
     private final AccidentJdbcTemplate accidents;
 
-    public void create(Accident accident) {
-        accidents.create(accident);
+    public void save(Accident accident) {
+        accidents.save(accident);
     }
 
     @Override

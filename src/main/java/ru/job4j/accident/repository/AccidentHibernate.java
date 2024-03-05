@@ -1,4 +1,6 @@
-package ru.job4j.accident.service;
+package ru.job4j.accident.repository;
+
+import lombok.RequiredArgsConstructor;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -6,12 +8,9 @@ import ru.job4j.accident.model.Accident;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 public class AccidentHibernate {
     private final SessionFactory sf;
-
-    public AccidentHibernate(SessionFactory sf) {
-        this.sf = sf;
-    }
 
     public Accident save(Accident accident) {
         try (Session session = sf.openSession()) {
@@ -20,7 +19,7 @@ public class AccidentHibernate {
         }
     }
 
-    public List<Accident> getAll() {
+    public List<Accident> findAll() {
         try (Session session = sf.openSession()) {
             return session
                     .createQuery("from Accident", Accident.class)

@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "types")
+@Table(name = "accident_types")
 public class AccidentType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

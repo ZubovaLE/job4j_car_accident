@@ -43,7 +43,7 @@ public class AccidentControl {
         accident.setType(typeService.findById(accident.getType().getId()).get());
         String[] ids = request.getParameterValues("rIds");
         accident.setRules(ruleService.findByIdArray(ids));
-        accidentService.create(accident);
+        accidentService.save(accident);
         return "redirect:/";
     }
 }
